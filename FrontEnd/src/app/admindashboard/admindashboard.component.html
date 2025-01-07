@@ -1,0 +1,38 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Admin Dashboard</h1>
+  </header>
+
+  <section class="table-container">
+    <h2>News Posts</h2>
+
+    <table *ngIf="newsPosts.length > 0; else noNews" class="news-table">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Published Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let post of newsPosts">
+        <td>{{ post.news_title }}</td>
+        <td>{{ post.author_name }}</td>
+        <td>{{ post.created_at }}</td>
+        <td>{{ post.status }}</td>
+        <td class="actions" *ngIf="post.status === 'pending'">
+          <a class="read-more-btn" [routerLink]="['/news', post.post_ID]">See Details</a>
+          <button (click)="approvePost(post.post_ID)" class="approve-btn">Approve</button>
+          <button (click)="rejectPost(post.post_ID)" class="reject-btn">Reject</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <ng-template #noNews>
+      <p>No pending news posts found.</p>
+    </ng-template>
+  </section>
+</div>

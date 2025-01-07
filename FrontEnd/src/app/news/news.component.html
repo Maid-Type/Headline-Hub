@@ -1,0 +1,30 @@
+<div class="news-container">
+  <h1>Latest News</h1>
+
+  <div class="filter-container">
+    <label for="date-picker">Filter by Date:</label>
+    <input
+      id="date-picker"
+      type="date"
+      (change)="filterByDate($event)"
+    [value]="date"
+    />
+  </div>
+
+  <div *ngIf="filteredNewsList.length > 0; else noNews">
+    <ul class="news-list">
+      <li *ngFor="let news of filteredNewsList" class="news-item">
+        <h2>{{ news.news_title }}</h2>
+        <p class="news-description">{{ news.content }}</p>
+        <p class="news-description">Author: {{ news.author_name }}</p>
+        <p class="news-date">Published on: {{ news.created_at }}</p>
+        <p class="news-date">Categories: {{ news.category }}</p>
+        <a [href]="'/news/' + news.post_ID" rel="noopener noreferrer">Read more</a>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noNews>
+    <p style="display: block;margin: 1rem 0;font-weight: bold">No news available for the selected date!</p>
+  </ng-template>
+</div>

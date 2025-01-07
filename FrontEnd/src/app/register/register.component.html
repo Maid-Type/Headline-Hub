@@ -1,0 +1,60 @@
+<div class="login-container">
+  <h1>Register</h1>
+
+  <div *ngIf="errors.length > 0" class="errors">
+    <ul>
+      <li *ngFor="let error of errors">{{ error }}</li>
+    </ul>
+  </div>
+
+  <div *ngIf="data?.length > 0" class="jasmine-result-message">
+    <ul>
+      <li>{{data}}</li>
+    </ul>
+  </div>
+
+
+  <form (ngSubmit)="register()">
+    <div>
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input [(ngModel)]="firstName" type="text" id="firstName" name="firstName" required placeholder="Enter your first name" />
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input [(ngModel)]="lastName" type="text" id="lastName" name="lastName" required placeholder="Enter your last name" />
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input [(ngModel)]="username" type="text" id="username" name="username" required placeholder="Enter your username" />
+    </div>
+    </div>
+
+    <div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input [(ngModel)]="email" type="email" id="email" name="email" required placeholder="Enter your email" />
+      </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input [(ngModel)]="password" type="password" id="password" name="password" required placeholder="Enter your password" />
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <input [(ngModel)]="confirmPassword" type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password" />
+    </div>
+
+      <div class="form-footer">
+        <button type="submit" class="login-button">Register!</button>
+        <p>Already have an account? <a href="/login">Login here</a></p>
+      </div>
+    </div>
+  </form>
+
+
+
+</div>

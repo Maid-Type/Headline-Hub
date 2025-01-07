@@ -1,0 +1,36 @@
+<div class="news-container">
+  <div class="news-card">
+    <h1 class="news-title">{{ news.news_title }}</h1>
+    <div class="news-meta">
+      <p class="news-author">By <strong>{{ news.author_name }}</strong></p>
+      <p class="news-date">Published on: <time>{{ news.created_at || 'longDate' }}</time></p>
+      <p class="news-category">Category: <span>{{ news.category }}</span></p>
+    </div>
+    <img
+      *ngIf="news.image_url"
+      [src]="news.image_url"
+      alt="{{ news.news_title }}"
+      class="news-image"
+    />
+    <p class="news-content">{{ news.content }}</p>
+    <div class="news-actions">
+      <button class="news-back-link" (click)="goBack()">← Back to all news</button>
+      <div class="news-share">
+        <span>Share:</span>
+        <a target="_blank" rel="noopener">
+          <img ngSrc="/assets/twitter_icon.png" alt="Share on Twitter" height="194" width="259"/>
+        </a>
+        <a target="_blank" rel="noopener">
+          <img ngSrc="/assets/facebook_icon.png" alt="Share on Facebook" height="2048" width="2048"/>
+        </a>
+        <a target="_blank" rel="noopener">
+          <img ngSrc="/assets/linkedin_icon.png" alt="Share on LinkedIn" height="512" width="512"/>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noNews>
+    <p class="no-news">No news available at the moment.</p>
+  </ng-template>
+</div>
