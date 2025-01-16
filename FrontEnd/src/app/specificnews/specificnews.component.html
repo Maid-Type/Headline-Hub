@@ -15,6 +15,18 @@
     <p class="news-content">{{ news.content }}</p>
     <div class="news-actions">
       <button class="news-back-link" (click)="goBack()">← Back to all news</button>
+
+      <div class="author-actions" *ngIf="isAuthor">
+        <button class="news-back-link" *ngIf="isAuthor" (click)="goBack()">
+          <a *ngIf="isAuthor" [routerLink]="['/editnews', newsId]">
+            ✎ Edit News
+          </a>
+        </button>
+        <button class="news-back-link" *ngIf="isAuthor" (click)="deleteNews()">
+            🗑️ Delete News
+        </button>
+      </div>
+
       <div class="news-share">
         <span>Share:</span>
         <a target="_blank" rel="noopener">
